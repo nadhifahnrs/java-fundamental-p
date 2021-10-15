@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+E:\difah\KULIAH\SMT3\PBO\PRAKTIKUM\Tugas 5\.metadata\.plugins\org.eclipse.jdt.core
+3604374917.index

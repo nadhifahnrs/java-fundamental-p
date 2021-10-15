@@ -1,0 +1,72 @@
+package Kasus2;
+
+import java.util.Scanner;
+
+public class Restaurant {
+	
+//	public String[] nama_makanan;
+//	public double[] harga_makanan;
+//	public int[] stok;
+//	public static byte id=0;
+	
+	/* Menset semua atribut data menjadi "private" */
+	private String[] nama_makanan;
+	private double[] harga_makanan;
+	private int[] stok;
+	private static byte id=0;
+	
+	Scanner input = new Scanner(System.in);
+	
+	public Restaurant() {
+		// inisialisasi data
+		nama_makanan = new String[10];
+		harga_makanan = new double[10];
+		stok = new int[10];
+	}
+	
+	public void tambahMenuMakanan(String nama, double harga, int stok) {
+		this.nama_makanan[id] = nama;
+		this.harga_makanan[id] = harga;
+		this.stok[id] = stok;
+	}
+	
+	public void tampilMenuMakanan(){
+		for(int i =0; i<=id;i++){
+			if(!isOutOfStock(i)){
+				System.out.println(nama_makanan[i] +"["+stok[i]+"]"+"\tRp. "+harga_makanan[i]);
+			}
+		}
+	}
+	
+	public void pemesanan(int stok) {
+		System.out.println("--Pemesanan Makanan--");
+		
+		System.out.print("Menu : ");
+		String namaMenu = input.nextLine();
+		System.out.print("Harga : ");
+		double hargaMenu = input.nextDouble();
+		System.out.print("Kuantitas : ");
+		int stokMenu = input.nextInt();
+		
+		if(!isOutOfStock(stok)) {
+			double harga = hargaMenu*stokMenu;
+			stok -= stokMenu;
+			
+			System.out.println("Menu : "+namaMenu);
+			System.out.println("Total = "+harga);
+			System.out.println("Sisa Stok = "+stok);
+		}
+	}
+		
+	public boolean isOutOfStock(int id){
+		if(stok[id] == 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public static void nextId(){
+		id++;
+	}
+}
